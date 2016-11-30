@@ -136,19 +136,19 @@ footer a {
 
 @media (min-width: 600px) {
   section {
-      width: 70%;
+    width: 75%;
   }
 
   article {
-      width: 65%;
+    width: 70%;
   }
 
   article h1 {
-      font-size: 1.1em;
+    font-size: 1.1em;
   }
 
   article p {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
 }
 
@@ -159,65 +159,69 @@ footer a {
   }
 
   header h1 {
-      font-size: 1.2em;
+    font-size: 1.2em;
   }
 
   header h2 {
-      font-size: 1em;
+    font-size: 1em;
   }
 
   header h3 {
-      font-size: 0.8em;
+    font-size: 0.8em;
   }
 
   section {
-      width: 60%;
+    width: 70%;
   }
 
   article {
-      width: 75%;
+    width: 80%;
   }
 
   article h1 {
-      font-size: 1.2em;
+    font-size: 1.2em;
   }
 
   article p {
-      font-size: 1em;
+    font-size: 1em;
   }
 }
 
 @media (min-width: 1000px) {
   header a i.fa-chevron-left {
-  font-size: 2.2em;
-  margin-top: 0.6em;
+    font-size: 2.2em;
+    margin-top: 0.6em;
   }
 
   header h1 {
-      font-size: 1.4em;
+    font-size: 1.4em;
   }
 
   header h2 {
-      font-size: 1.2em;
+    font-size: 1.2em;
   }
 
   header h3 {
-      font-size: 1em;
+    font-size: 1em;
   }
 
   section {
-      width: 50%;
+    width: 50%;
+  }
+
+  section.post {
+    width: 75%;
   }
 
   article {
-      width: 80%;
+    width: 80%;
   }
 
   article h1 {
-      font-size: 1.3em;
+    font-size: 1.3em;
   }
 
   article p {
-      font-size: 1.1em;
+    font-size: 1.1em;
   }
 }
