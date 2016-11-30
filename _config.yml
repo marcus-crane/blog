@@ -19,3 +19,4 @@ markdown: kramdown
 exclude:
   - Gemfile
   - Gemfile.lock
+  - CNAME
