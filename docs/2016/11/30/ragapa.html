@@ -34,19 +34,69 @@
 
 <p>So, I’m sitting at the library using the public WiFi and I visit an unsecured site.</p>
 
-<p><a href="/img/ragapa/thingsimade-injection.png"><img src="/img/ragapa/thingsimade-injection.png" alt="Ministry of Transport face with injection in front of it" /></a></p>
+<p><a href="/img/ragapa/mot-injection.png"><img src="/img/ragapa/mot-injection.png" alt="Ministry of Transport face with injection in front of it" /></a></p>
 
-<p>Bam, injected ad frame. What the heck is this?! I run Common Sense 2016, the most up to date antivirus there is!</p>
+<p>Bam, injected ad frame. What?!? I run Common Sense 2016, the most up to date antivirus available!</p>
 
 <p><a href="/img/ragapa/thingsimade-injection.png"><img src="/img/ragapa/thingsimade-injection.png" alt="Even my own site had it since I disabled https" /></a></p>
 
-<p>Even my own site is suffering from this rather ugly defacement! Bah, and people think I’m silly for enabling https even on my static sites. With it enabled, no one has to see how horrible this looks.</p>
+<p>Even my own site is suffering from this rather ugly defacement! Bah, and people think I’m silly for enabling https even on my static sites. If a site has it enabled, these ads can’t insert themselves midway.</p>
 
-<p>I realised later on that I had removed <a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en">uBlock Origin</a> while testing out some different extensions, and forgotten to reinstall it, which is why I’d never had these injections before.</p>
+<p>I realised later on that I had removed <a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en">uBlock Origin</a> while testing out some different extensions, and forgotten to reinstall it, which is why I’d never seen these injections before.</p>
 
 <h2 id="if-its-not-me-maybe-its-the-network">If it’s not me, maybe it’s the network!</h2>
 
-<p>I had a look in my extensions. Nothing out of place there. Nothing sitting in /Applications</p>
+<p>I had a look in my extensions. Nothing out of place there. A quick poke around the most obvious places turned up zilch so perhaps it was someone, or something on the network?</p>
+
+<p>I spun up <a href="https://wireshark.org">Wireshark</a> and watched the network spew out heaps of requests. It was a public city WiFi after all but thankfully, you can filter by <code class="highlighter-rouge">http</code> to gain some more clarity.</p>
+
+<p>Oooh, what’s that?</p>
+
+<p><a href="/img/ragapa/wireshark.png"><img src="/img/ragapa/wireshark.png" alt="The Wireshark captures from Wellington Library" /></a></p>
+
+<p>Hmm, <code class="highlighter-rouge">GET /api/adscript.jsp</code>? That looks promising.</p>
+
+<p>Perhaps an infected device is serving it up? What if it’s someone hijacking unsecured requests and inserting their own monetisation? I gotta know more!</p>
+
+<p>Thanks to my rookie skills with nmap, I remembered that I could run a scan on it, not just for open ports but also details about its OS as well.</p>
+
+<p><a href="/img/ragapa/cbdfree-nmap.png"><img src="/img/ragapa/cbdfree-nmap.png" alt="nmap output from the Wellington Library scan" /></a></p>
+
+<p><code class="highlighter-rouge">Too many fingerprints match this host to give specific OS details.</code> Well, so much for that approach.</p>
+
+<p>Maybe the actual ad script itself can give me some clues?</p>
+
+<h2 id="its-usually-quicker-if-you-look-at-whats-right-in-front-of-you">It’s usually quicker if you look at what’s right in front of you</h2>
+
+<p>I loaded up a non-secure site and poked around the DOM.</p>
+
+<p><a href="/img/ragapa/script.png"><img src="/img/ragapa/script.png" alt="Developer tools in Google Chrome showing injected Javascript" /></a></p>
+
+<p>Oh… That address has <a href="http://www.citylink.co.nz/">Citylink Wellington</a> in it who run the actual network itself. I guess it’s nothing malicious after all but still a pain in the ass.</p>
+
+<p>I kept coming across <code class="highlighter-rouge">ragapa</code> references, such as <code class="highlighter-rouge">div class=ragapaBottomImage</code> and <code class="highlighter-rouge">script src=http://adapi.ragapa.com</code> but in wanting to play with Wireshark, I skipped the obvious path of just searching the name. How is that any fun though!</p>
+
+<p>It didn’t take me long before I found an article about RaGaPa.</p>
+
+<p><a href="/img/ragapa/ragapa-article.png"><img src="/img/ragapa/ragapa-article.png" alt="An article about the RaGaPa ad injection device" /></a></p>
+
+<p>They’re a company who provide devices that inject ads into WiFi hotspots. In this case, the entire city wide WiFi hotspot called <code class="highlighter-rouge">cbdfree</code>.</p>
+
+<h2 id="i-want-to-make-it-go-away">I want to make it go away.</h2>
+
+<p>Well, the good news is that there are ad blockers for exactly that! Chances are, if you use Adblock, you’re using Easylist which was merged with a list maintained by New Zealand’s very own <a href="https://fanboy.co.nz/">Fanboy List</a>. He actually had RaGaPa’s site in his list so more or less every instance of Adblock will block it by default.</p>
+
+<p>This wouldn’t be an interesting post without some sort of shitty solution though. If you don’t want to run Adblock for ethical reasons but hate the cbd injections, I made a simple Chrome extensions that blocks just those injections.</p>
+
+<p>Mainly, I just made it for myself since I don’t run uBlock on my incognito windows but I want to remove RaGaPa’s annoying windows so I can do that easily! I also know it’s safe to use since I wrote it but more importantly, it’s open source.</p>
+
+<p>Mainly just because it’s one of the examples modified slightly. I didn’t really any coding at all.</p>
+
+<p>It was a good experience using Chrome’s APIs directly though. Enjoy!</p>
+
+<p><strong>P.S. At present, I’m looking for my first Junior Dev role!</strong> If you like what you’ve read and are looking to take someone new on board, I’d be happy to chat! All of my contact details are in the footer below.</p>
+
+<p>Like just down there. You probably don’t even need to scroll, just move your eyes down a wee bit. Yeah, those blue icons.</p>
 
   </article>
 </section>
