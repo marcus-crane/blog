@@ -68,7 +68,7 @@
 
 <p>Well, next stop is just talking to the mail server itself and seeing what it says about the email addresses in question!</p>
 
-<p><a href="/img/china/nmap-p1.png"><img src="/img/china/nmap-p1.png" alt="A terminal window with the mail server saying Relay access denied" /></a></p>
+<p><a href="/img/china/relay-denied.png"><img src="/img/china/relay-denied.png" alt="A terminal window with the mail server saying Relay access denied" /></a></p>
 
 <p>I remembered a neat trick I learnt a week or two back where you can get the mail records for a domain using <code class="highlighter-rouge">nslookup -q=MX [domain]</code> and then just manually connect to them using <code class="highlighter-rouge">telnet [mail server] [port (usually 25)]</code>.</p>
 
