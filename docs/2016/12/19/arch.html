@@ -80,12 +80,18 @@
 
 <p>First step is to run <code class="highlighter-rouge">parted /dev/sdb</code> so we can specify how we want to set up our partition</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mklabel msdos
-mkpart ESP fat32 1MiB 500MiB /boot
+<p>EDIT: <strong>NOTE: File locations like [/boot] are just for reference! They are not part of the commands</strong></p>
+
+<p>Funnily enough, I was using my own guide to install Arch on an Intel NUC and fell into that trap. I’ve also changed <code class="highlighter-rouge">mklabel msdos</code> to <code class="highlighter-rouge">mklabel gpt</code> because I forgot to alter my notes.</p>
+
+<p>As far as the different between UEFI and BIOS requirements, I’m still learning but you’d use GPT with UEFI in order to be able to make an EFI partition?</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mklabel gpt
+mkpart ESP fat32 1MiB 500MiB [/boot]
 set 1 boot on
-mkpart primary ext4 500MiB 20.5GiB /
-mkpart primary linux-swap 20.5GiB 28GiB swap
-mkpart primary ext4 28GiB 100% /home
+mkpart primary ext4 500MiB 20.5GiB [/]
+mkpart primary linux-swap 20.5GiB 28GiB [swap]
+mkpart primary ext4 28GiB 100% [/home]
 Ctrl + C
 </code></pre>
 </div>
@@ -126,11 +132,11 @@ Ctrl + C
 
 <p>Now that we’ve specificied the partitions, we actually need to make some file systems for them and activate the swap partition:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkfs.vfat -F32 /dev/sdb1 /boot
-mkfs.ext4 /dev/sdb2 /
-mkswap /dev/sdb3 swap
+<div class="highlighter-rouge"><pre class="highlight"><code>mkfs.vfat -F32 /dev/sdb1 [/boot]
+mkfs.ext4 /dev/sdb2 [/]
+mkswap /dev/sdb3 [swap]
 swapon /dev/sdb3
-mkfs.ext4 /dev/sdb4 /home
+mkfs.ext4 /dev/sdb4 [/home]
 </code></pre>
 </div>
 
