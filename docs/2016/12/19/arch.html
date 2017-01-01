@@ -48,7 +48,7 @@
 
 <p>By default, your <code class="highlighter-rouge">~</code> key will spit out a <code class="highlighter-rouge">&lt;</code> so we need to fix that</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>touch /etc/rc.local
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>touch /etc/rc.local
 <span class="nb">echo</span> <span class="s2">"echo 0 &gt; /sys/module/hid_apple/parameters/iso_layout"</span> &gt; /etc/rc.local
 <span class="nb">source</span> /etc/rc.local
 </code></pre>
@@ -60,7 +60,7 @@
 
 <p>Next up, we need to connect to WiFi. You can manually use things like the <code class="highlighter-rouge">wpa_supplicant.conf</code> file but the built in <code class="highlighter-rouge">wifi-menu</code> command is way easier.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>wifi-menu
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>wifi-menu
 </code></pre>
 </div>
 
@@ -86,12 +86,12 @@
 
 <p>As far as the different between UEFI and BIOS requirements, I’m still learning but you’d use GPT with UEFI in order to be able to make an EFI partition?</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mklabel gpt
-mkpart ESP fat32 1MiB 500MiB [/boot]
-set 1 boot on
-mkpart primary ext4 500MiB 20.5GiB [/]
-mkpart primary linux-swap 20.5GiB 28GiB [swap]
-mkpart primary ext4 28GiB 100% [/home]
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>mklabel gpt
+mkpart ESP fat32 1MiB 500MiB <span class="o">[</span>/boot]
+<span class="nb">set </span>1 boot on
+mkpart primary ext4 500MiB 20.5GiB <span class="o">[</span>/]
+mkpart primary linux-swap 20.5GiB 28GiB <span class="o">[</span>swap]
+mkpart primary ext4 28GiB 100% <span class="o">[</span>/home]
 Ctrl + C
 </code></pre>
 </div>
@@ -132,11 +132,11 @@ Ctrl + C
 
 <p>Now that we’ve specificied the partitions, we actually need to make some file systems for them and activate the swap partition:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkfs.vfat -F32 /dev/sdb1 [/boot]
-mkfs.ext4 /dev/sdb2 [/]
-mkswap /dev/sdb3 [swap]
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>mkfs.vfat -F32 /dev/sdb1 <span class="o">[</span>/boot]
+mkfs.ext4 /dev/sdb2 <span class="o">[</span>/]
+mkswap /dev/sdb3 <span class="o">[</span>swap]
 swapon /dev/sdb3
-mkfs.ext4 /dev/sdb4 [/home]
+mkfs.ext4 /dev/sdb4 <span class="o">[</span>/home]
 </code></pre>
 </div>
 
@@ -144,7 +144,7 @@ mkfs.ext4 /dev/sdb4 [/home]
 
 <p>With our filesystems created and swap partition activated, we can mount the filesystems in order to start installing our operating system</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mount /dev/sdb2 /mnt
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>mount /dev/sdb2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sdb1 /mnt/boot
 mkdir -p /mnt/home
@@ -158,7 +158,7 @@ mount /dev/sdb4 /mnt/home
 
 <p>With the filesystems mounted, it’s time to install the base Arch packages</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>pacstrap /mnt base base-devel
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>pacstrap /mnt base base-devel
 </code></pre>
 </div>
 
@@ -168,7 +168,7 @@ mount /dev/sdb4 /mnt/home
 
 <p>We’ll want to generate an fstab template to <code class="highlighter-rouge">/etc/fstab</code> for later so we can name our filesystems and then use <code class="highlighter-rouge">arch-chroot</code> to get bash working</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 arch-chroot /mnt /bin/bash
 </code></pre>
 </div>
@@ -177,16 +177,19 @@ arch-chroot /mnt /bin/bash
 
 <p>For you, it’ll just be whichever matches your respective language and country code. You’ll likely want to choose the <code class="highlighter-rouge">UTF-8</code> option if there are multiple choices.</p>
 
-<p>Generate locale
-<code class="highlighter-rouge">nano /etc/locale.gen</code>
-<code class="highlighter-rouge">locale-gen</code>
-<code class="highlighter-rouge">echo LANG={locale} &gt; /etc/locale.conf</code></p>
+<p>Generate locale</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>nano /etc/locale.gen
+locale-gen
+<span class="nb">echo </span><span class="nv">LANG</span><span class="o">={</span>locale<span class="o">}</span> &gt; /etc/locale.conf
+</code></pre>
+</div>
 
 <p>I hope it goes without saying that <strong>{locale} is a placeholder. Swap it with your own locale eg: <code class="highlighter-rouge">LANG=en_NZ.UTF-8</code></strong></p>
 
 <p>Next, we’ll be setting our timezones. Again, just swap NZ for your country code.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ln -sf /usr/share/zoneinfo/NZ /etc/localtime
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>ln -sf /usr/share/zoneinfo/NZ /etc/localtime
 hwclock --systohc
 </code></pre>
 </div>
@@ -199,13 +202,13 @@ hwclock --systohc
 
 <p>You’ll want to edit fstab and make sure they’re set correctly.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /etc/fstab
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>nano /etc/fstab
 </code></pre>
 </div>
 
 <p>For some optional optimisation (no idea what, I just saw this somewhere along the way), you can add <code class="highlighter-rouge">discard</code> to the line <code class="highlighter-rouge">rw,relatime,data=ordered</code> on the <code class="highlighter-rouge">/home</code> partition in your <code class="highlighter-rouge">fstab</code> file.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rw,relatime,data=ordered,discard
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>rw,relatime,data<span class="o">=</span>ordered,discard
 </code></pre>
 </div>
 
@@ -215,7 +218,7 @@ hwclock --systohc
 
 <p>Easily fixed by adding <code class="highlighter-rouge">coretemp</code> and <code class="highlighter-rouge">applesmc</code> to <code class="highlighter-rouge">/etc/modules</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /etc/modules
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>nano /etc/modules
 </code></pre>
 </div>
 
@@ -225,13 +228,13 @@ hwclock --systohc
 
 <p>All you need to do is edit it and add your desired hostname. Just the name and nothing else.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /etc/hostname`
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>nano /etc/hostname
 </code></pre>
 </div>
 
 <p>You’ll also want to add the <code class="highlighter-rouge">hostname</code> after both <code class="highlighter-rouge">localhost</code> instances in your hosts file</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /etc/hosts
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>nano /etc/hosts
 </code></pre>
 </div>
 
@@ -239,7 +242,7 @@ hwclock --systohc
 
 <p>Admittedly, this is where I get a bit lost but I believe we’re generating the Linux kernel for our OS? I don’t even know what I’m talking about but it’s the next step</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkinitcpio -p linux
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>mkinitcpio -p linux
 </code></pre>
 </div>
 
@@ -249,7 +252,7 @@ hwclock --systohc
 
 <p>It’s as simple as running one command and entering in the password you’d like</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>passwd
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>passwd
 </code></pre>
 </div>
 
@@ -257,8 +260,8 @@ hwclock --systohc
 
 <p>I don’t recall the exact reason for this but I suppose it’s assumed after the upcoming restart that LAN support will be lost. I never had this issue but there’s no hard in it anyway.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>pacman -S dhcpcd
-systemctl enable dhcpcd
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>pacman -S dhcpcd
+systemctl <span class="nb">enable </span>dhcpcd
 </code></pre>
 </div>
 
@@ -266,8 +269,8 @@ systemctl enable dhcpcd
 
 <p>Here is where things went sideways for me. As far as I’m aware, these are the correct commands for installing the UEFI bootloader (I never tried using grub2 which may fix this issue)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>pacman -S dosfstools
-bootctl --path=/boot install
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>pacman -S dosfstools
+bootctl --path<span class="o">=</span>/boot install
 </code></pre>
 </div>
 
@@ -275,13 +278,13 @@ bootctl --path=/boot install
 
 <p>We need to make a new entry in the boot segment</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /boot/loader/entries/arch.conf
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>nano /boot/loader/entries/arch.conf
 </code></pre>
 </div>
 
 <p>and then configure it by entering the following</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>title Arch Linux
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
 options <span class="nv">root</span><span class="o">=</span>/dev/sdb2 rw <span class="nv">elevator</span><span class="o">=</span>deadline quiet splash <span class="nv">resume</span><span class="o">=</span>/dev/sdb3 <span class="nv">nmi_watchdog</span><span class="o">=</span>0
@@ -290,14 +293,14 @@ options <span class="nv">root</span><span class="o">=</span>/dev/sdb2 rw <span c
 
 <p>Once that’s all done, we then set Arch Linux as our default OS for loading like so</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>echo "default arch" &gt; /boot/loader/loader.conf
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"default arch"</span> &gt; /boot/loader/loader.conf
 </code></pre>
 </div>
 
 <p>and reboot in order to carry on with the rest of the setup (Desktop environment and what not)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>exit
-reboot
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">exit
+</span>reboot
 </code></pre>
 </div>
 
