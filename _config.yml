@@ -2,7 +2,7 @@
 # SEO settings
 title: UTF-9000
 description: "Sometimes I get lost in cyberspace so it's about time I share my findings!"
-keywords: "Jekyll, theme, free, download, SEO, blog, web"
+keywords: "utf-9000, junior developer, cyberspace"
 url: http://blog.thingsima.de
 baseurl: null
 
@@ -30,14 +30,17 @@ sass:
 # Author settings
 author:
   name     : Marcus Crane
-  job      : Hobbyist programmer
+  title      : hobbyist developer
+  available: true
   bio      : "Sometimes I get lost in cyberspace so it's about time I share my findings!"
+  location : "Wellington, NZ."
   thumb    : null
   email    : marcus@thingsima.de
   url      : http://thingsima.de
   github   : http://github.com/marcus-crane
   twitter  : http://twitter.com/ethernetsalad
   linkedin : http://linkedin.com/in/placeholderurl
+
 
 # social settings
 og_locale: "en_NZ"

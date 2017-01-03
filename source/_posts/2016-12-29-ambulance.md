@@ -12,19 +12,19 @@ There were two ambulances at our neighbours place and interestingly enough, they
 
 [![Left half of a network scan][1]][1]
 
-[1]: /img/ambulance/scan-left.png
+[1]: /assets/img/ambulance/scan-left.png
 
 Nothing much stands out here. They're both using WPA2 Personal and 802.11b/g/n, although they're on different channels. You wouldn't want a gathering of ambulance WiFi networks interfering with each other, right?
 
 [![Right half of a network scan][2]][2]
 
-[2]: /img/ambulance/scan-right.png
+[2]: /assets/img/ambulance/scan-right.png
 
 Everything else is the same but interestingly, for New Zealand ambulances, their country code is set to American! I guess they were just left using default factory settings?
 
 [![A slightly more informative scan][3]][3]
 
-[3]: /img/ambulance/stumbler.png
+[3]: /assets/img/ambulance/stumbler.png
 
 I did a bit more searching around the use of wireless networks in New Zealand ambulances and it took me beyond Page 1 of Google...
 

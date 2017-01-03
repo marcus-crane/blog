@@ -57,7 +57,6 @@ hr {
 .link {
   display: inline-block;
   padding-bottom: .08em;
-  border-bottom: 2px solid $light-gray-color;
 
   @include transition(border 300ms linear);
 
@@ -69,7 +68,6 @@ hr {
 }
 
 .site-header {
-  border-top: 5px solid $light-gray-color;
   border-bottom: 1px solid lighten($light-gray-color, 5%);
   margin-bottom: $small-spacing;
   min-height: 80px;
