@@ -1,46 +1,7 @@
-# simplest
+### UTF-9000
 
-Simple Jekyll theme
+This is the Github copy of my Jekyll blog. The previous theme was my own [UTF-9000](https://github.com/marcus-crane/utf-9000) but now it's using [Simplest](https://github.com/nandomoreirame/simplest).
 
-> :warning:
-  This theme requires ruby and rubygems installed
+### Where can I read it?
 
-* [x] Clean layout
-* [x] Resposive layout
-* [x] Preprocessor SASS
-* [x] HTML minified
-* [x] CSS minified
-* [x] No Javascript
-* [x] Pagination
-* [x] Syntax highlight
-* [x] Author config
-* [x] Comments with Disqus
-* [x] Share posts
-
----
-
-### Start in 4 steps
-
-1. Download or clone repo `git clone git@github.com:nandomoreirame/simplest.git`
-2. Enter the folder: `cd simplest/`
-3. Install Ruby gems: `bundle install`
-4. Start Jekyll server: `jekyll serve`
-
-Access, [localhost:4000/simplest](http://localhost:4000/simplest)
-
----
-
-### Demo and Download
-
-[Demo](https://nandomoreira.me/simplest/)
-[Download](https://github.com/nandomoreirame/simplest/archive/master.zip)
-
-![simplest - free Jekyll theme](/screenshot.png)
-
----
-
-### Copyright and license
-
-It is under [the MIT license](/LICENSE).
-
-Enjoy :yum:
+It's available at [http://blog.thingsima.de](http://blog.thingsima.de).

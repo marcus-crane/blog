@@ -1,15 +1,14 @@
 
 # SEO settings
-title: Simplest
-description: "A free Jekyll theme for download"
+title: UTF-9000
+description: "Sometimes I get lost in cyberspace so it's about time I share my findings!"
 keywords: "Jekyll, theme, free, download, SEO, blog, web"
-url: http://nandomoreira.me
-baseurl: "/simplest"
-# baseurl: null
+url: http://blog.thingsima.de
+baseurl: null
 
 google_analytics: UA-52446115-1
-repo: http://github.com/nandomoreirame/simplest
-disqus_shortname: "nandothemes"
+repo: http://github.com/marcus-crane/marcus-crane.github.io
+disqus_shortname: ""
 
 # Build settings
 permalink   : /:year/:title/
@@ -21,7 +20,7 @@ paginate_path: "/page/:num/"
 comments: true
 
 source: source
-destination: _site
+destination: docs
 
 # Sass configuration
 sass:
@@ -30,19 +29,18 @@ sass:
 
 # Author settings
 author:
-  name     : Fernando Moreira
-  job      : Frontend Engineer
-  bio      : "Enthusiast performance, responsive design and usability, always looking for the best project and good coffee."
-  thumb    : /images/author.jpg
-  email    : nandomoreira.me@gmail.com
-  url      : http://nandomoreira.me
-  github   : http://github.com/nandomoreirame
-  twitter  : http://twitter.com/nandomoreirame
-  facebook : http://facebook.com/fernando.dev
-  linkedin : http://linkedin.com/in/nandomoreirame
+  name     : Marcus Crane
+  job      : Hobbyist programmer
+  bio      : "Sometimes I get lost in cyberspace so it's about time I share my findings!"
+  thumb    : null
+  email    : marcus@thingsima.de
+  url      : http://thingsima.de
+  github   : http://github.com/marcus-crane
+  twitter  : http://twitter.com/ethernetsalad
+  linkedin : http://linkedin.com/in/placeholderurl
 
 # social settings
-og_locale: "pt_BR"
+og_locale: "en_NZ"
 twitter_card: "summary_large_image"
 twitter_site: "@nandomoreirame"
 
