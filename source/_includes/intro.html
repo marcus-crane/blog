@@ -1,0 +1,14 @@
+<section class="intro">
+  <div class="container">
+    <p class="lead">Hi, I'm <strong class="author-name" itemprop="name">{{ site.author.name }}</strong>, a <em itemprop="jobTitle">{{ site.author.title }}</em>
+    {% if site.author.location %}
+    from {{ site.author.location }}
+    {% endif %}<br>
+    {{ site.author.bio }}<br>
+    {% if site.author.available == true %}
+    <br>
+    P.S. I'm available for a chat if you're searching for your next Junior Dev ;)
+    {% endif %}
+    </p>
+  </div>
+</section>

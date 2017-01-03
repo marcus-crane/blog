@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UTF-9000</title>
+    <description>Sometimes I get lost in cyberspace so it&#39;s about time I share my findings!</description>
+    <link>http://blog.thingsima.de/</link>
+    <atom:link href="http://blog.thingsima.de/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 03 Jan 2017 21:15:11 +1300</pubDate>
+    <lastBuildDate>Tue, 03 Jan 2017 21:15:11 +1300</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Ambulance WiFi Hotspot</title>
+        <description>&lt;p&gt;This actually happened a few days ago but pbbt, everyone is on holiday and writing is hard!&lt;/p&gt;
+
+&lt;p&gt;There were two ambulances at our neighbours place and interestingly enough, they apparently emit their own WiFi networks. At first I thought it was a coincidence until the second ambulance (and SSID) appeared so I had a look.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ambulance/scan-left.png&quot;&gt;&lt;img src=&quot;/assets/img/ambulance/scan-left.png&quot; alt=&quot;Left half of a network scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nothing much stands out here. They’re both using WPA2 Personal and 802.11b/g/n, although they’re on different channels. You wouldn’t want a gathering of ambulance WiFi networks interfering with each other, right?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ambulance/scan-right.png&quot;&gt;&lt;img src=&quot;/assets/img/ambulance/scan-right.png&quot; alt=&quot;Right half of a network scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Everything else is the same but interestingly, for New Zealand ambulances, their country code is set to American! I guess they were just left using default factory settings?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ambulance/stumbler.png&quot;&gt;&lt;img src=&quot;/assets/img/ambulance/stumbler.png&quot; alt=&quot;A slightly more informative scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I did a bit more searching around the use of wireless networks in New Zealand ambulances and it took me beyond Page 1 of Google…&lt;/p&gt;
+
+&lt;p&gt;The first interesting bit was from &lt;a href=&quot;http://www.cio.co.nz/article/557698/mission-critical-ict-st-john-nz/&quot;&gt;this interview&lt;/a&gt; by CIO back in October 2014.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;“We’re looking at putting wireless technology into every ambulance station, so that while the ambulance is in transit it will be using the 3G network. Then, as it drives into the station, the wireless will take over.”&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So, the ambulances have the ability to switch between 3G and WiFi on the fly which makes sense.&lt;/p&gt;
+
+&lt;p&gt;The other informative piece was from &lt;a href=&quot;https://www.lightwire.co.nz/case-studies/st-john-hq-thames/&quot;&gt;a case study&lt;/a&gt; by Lightwire where they detail systems upgrades they aided with in October 2015&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;“When an ambulance comes back from a call out, staff sync this information, which on the old system added to the strain.”&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It isn’t stated outright but I can assume from those two quotes that the WiFi network being broadcast syncs patient data back to HQ once they arrive back at their respective stations.&lt;/p&gt;
+
+&lt;p&gt;Well, that certainly more interesting than I expected. I didn’t get a chance to gather much information when the ambulances were there. I popped on a scan and then got sidetracked with troubleshooting my parents desktop. Despite that, it looks like this was another successful round of detective work!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Jan 2017 00:00:00 +1300</pubDate>
+        <link>http://blog.thingsima.de/2017/ambulance/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2017/ambulance/</guid>
+        
+        
+        <category>networking</category>
+        
+      </item>
+    
+      <item>
+        <title>Half installing Arch Linux</title>
+        <description>&lt;h2 id=&quot;some-steps-towards-installing-arch-linux-on-a-macbook-pro&quot;&gt;Some steps towards installing Arch Linux on a Macbook Pro&lt;/h2&gt;
+
+&lt;p&gt;As a bit of fun, I attempted to try installing Arch Linux on my Macbook.&lt;/p&gt;
+
+&lt;p&gt;I didn’t actually get there in the end, mainly just because I got fed up (and needed a working OS the next day) but for anyone else interested in making an attempt, here’s what I managed to figure out.&lt;/p&gt;
+
+&lt;p&gt;It isn’t the most efficient order of commands either so take it with a grain of salt.&lt;/p&gt;
+
+&lt;p&gt;I should also mention that, &lt;strong&gt;this is not comprehensive enough to give you a fully working operating system!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Only use this as reference if you’re invested enough to figure out the rest of the kinks along the way. &lt;strong&gt;I’m not gonna be responsible if you have any issues.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;keyboard&quot;&gt;Keyboard&lt;/h4&gt;
+
+&lt;p&gt;First things first:&lt;/p&gt;
+
+&lt;p&gt;By default, your &lt;code&gt;~&lt;/code&gt; key will spit out a &lt;code&gt;&amp;lt;&lt;/code&gt; so we need to fix that&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;touch /etc/rc.local
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;echo 0 &amp;gt; /sys/module/hid_apple/parameters/iso_layout&amp;quot;&lt;/span&gt; &amp;gt; /etc/rc.local
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/rc.local&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This part pretty much goes for any Linux OS on a Macbook.&lt;/p&gt;
+
+&lt;h3 id=&quot;connect-to-wifi&quot;&gt;Connect to WiFi&lt;/h3&gt;
+
+&lt;p&gt;Next up, we need to connect to WiFi. You can manually use things like the &lt;code&gt;wpa_supplicant.conf&lt;/code&gt; file but the built in &lt;code&gt;wifi-menu&lt;/code&gt; command is way easier.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;wifi-menu&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once you’ve set up a profile and connected, you can check that you have an IP address assigned with &lt;code&gt;ip addr&lt;/code&gt; and then ping google to check that you’re receiving data with &lt;code&gt;ping google.com -c 3&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;partitions&quot;&gt;Partitions&lt;/h3&gt;
+
+&lt;p&gt;This part was a huge pain in the butt for me&lt;/p&gt;
+
+&lt;p&gt;First we need to get the location of your primary hard drive. You can run &lt;code&gt;fdisk -l&lt;/code&gt; to list all of your hard drives. For me, my primary drive is &lt;code&gt;/dev/sdb&lt;/code&gt; which may differ for you.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: &lt;em&gt;_Going forward, I’ll be using &lt;code&gt;/dev/sdb&lt;/code&gt; but if it’s different for you, replace it with your own drive location_&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;For myself, I have a 250GB SSD but you’ll have to decide what you’re after yourself.&lt;/p&gt;
+
+&lt;p&gt;The setup I decided on was a 500MB EFI boot partition, 20GB root partition, 7.5GB swap partition and the remainder assigned to &lt;code&gt;/home&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;First step is to run &lt;code&gt;parted /dev/sdb&lt;/code&gt; so we can specify how we want to set up our partition&lt;/p&gt;
+
+&lt;p&gt;EDIT: &lt;strong&gt;NOTE: File locations like [/boot] are just for reference! They are not part of the commands&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Funnily enough, I was using my own guide to install Arch on an Intel NUC and fell into that trap. I’ve also changed &lt;code&gt;mklabel msdos&lt;/code&gt; to &lt;code&gt;mklabel gpt&lt;/code&gt; because I forgot to alter my notes.&lt;/p&gt;
+
+&lt;p&gt;As far as the different between UEFI and BIOS requirements, I’m still learning but you’d use GPT with UEFI in order to be able to make an EFI partition?&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mklabel gpt
+mkpart ESP fat32 1MiB 500MiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/boot&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; boot on
+mkpart primary ext4 500MiB 20.5GiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+mkpart primary linux-swap 20.5GiB 28GiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;swap&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+mkpart primary ext4 28GiB 100% &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/home&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+Ctrl + C&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once that’s done, checking &lt;code&gt;fdisk -l&lt;/code&gt; again should show the partition setup like so:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Device&lt;/th&gt;
+      &lt;th&gt;Size&lt;/th&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/dev/sdb1&lt;/td&gt;
+      &lt;td&gt;499M&lt;/td&gt;
+      &lt;td&gt;EFI&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/dev/sdb2&lt;/td&gt;
+      &lt;td&gt;20G&lt;/td&gt;
+      &lt;td&gt;Linux&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/dev/sdb3&lt;/td&gt;
+      &lt;td&gt;7.5G&lt;/td&gt;
+      &lt;td&gt;Linux swap / Solaris&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/dev/sdb4&lt;/td&gt;
+      &lt;td&gt;205.8G&lt;/td&gt;
+      &lt;td&gt;Linux&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Now that we’ve specificied the partitions, we actually need to make some file systems for them and activate the swap partition:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mkfs.vfat -F32 /dev/sdb1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/boot&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+mkfs.ext4 /dev/sdb2 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+mkswap /dev/sdb3 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;swap&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+swapon /dev/sdb3
+mkfs.ext4 /dev/sdb4 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/home&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;mounting-the-filesystems&quot;&gt;Mounting the filesystems&lt;/h3&gt;
+
+&lt;p&gt;With our filesystems created and swap partition activated, we can mount the filesystems in order to start installing our operating system&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mount /dev/sdb2 /mnt
+mkdir -p /mnt/boot
+mount /dev/sdb1 /mnt/boot
+mkdir -p /mnt/home
+mount /dev/sdb4 /mnt/home&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For anyone wondering why they’ve never seen &lt;code&gt;/mnt&lt;/code&gt; before, it doesn’t actually exist. In the end, it just resolves to &lt;code&gt;/&lt;/code&gt;. For example, &lt;code&gt;/mnt/home&lt;/code&gt; just becomes &lt;code&gt;/home&lt;/code&gt; and so on.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-base-packages&quot;&gt;Installing base packages&lt;/h3&gt;
+
+&lt;p&gt;With the filesystems mounted, it’s time to install the base Arch packages&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pacstrap /mnt base base-devel&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;fiddly-setup-bits-and-pieces&quot;&gt;Fiddly setup bits and pieces&lt;/h3&gt;
+
+&lt;p&gt;This is the last little step before we can get a &lt;code&gt;bash&lt;/code&gt; sh running which should make terminal fans feel more comfortable.&lt;/p&gt;
+
+&lt;p&gt;We’ll want to generate an fstab template to &lt;code&gt;/etc/fstab&lt;/code&gt; for later so we can name our filesystems and then use &lt;code&gt;arch-chroot&lt;/code&gt; to get bash working&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+arch-chroot /mnt /bin/bash&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Next we’ll generate our locale. When you edit &lt;code&gt;/etc/locale.gen&lt;/code&gt;, you’ll see every available locale and you just need to uncomment your respective one. For me, it’s &lt;code&gt;en_NZ.UTF-8&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For you, it’ll just be whichever matches your respective language and country code. You’ll likely want to choose the &lt;code&gt;UTF-8&lt;/code&gt; option if there are multiple choices.&lt;/p&gt;
+
+&lt;p&gt;Generate locale&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/locale.gen
+locale-gen
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;locale&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &amp;gt; /etc/locale.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I hope it goes without saying that &lt;strong&gt;{locale} is a placeholder. Swap it with your own locale eg: &lt;code&gt;LANG=en_NZ.UTF-8&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we’ll be setting our timezones. Again, just swap NZ for your country code.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;ln -sf /usr/share/zoneinfo/NZ /etc/localtime
+hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;fix-boot-order-and-optimise-ssd&quot;&gt;Fix boot order and optimise SSD&lt;/h3&gt;
+
+&lt;p&gt;This part can be a bit confusing. By default, in your &lt;code&gt;fstab&lt;/code&gt; file, the boot order of your partitions may possibly be the wrong way around.&lt;/p&gt;
+
+&lt;p&gt;For me, &lt;code&gt;/dev/sdb1&lt;/code&gt; should be set to &lt;code&gt;01&lt;/code&gt; and &lt;code&gt;/dev/sdb2&lt;/code&gt; should be set to &lt;code&gt;02&lt;/code&gt; but they were the wrong way around.&lt;/p&gt;
+
+&lt;p&gt;You’ll want to edit fstab and make sure they’re set correctly.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/fstab&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For some optional optimisation (no idea what, I just saw this somewhere along the way), you can add &lt;code&gt;discard&lt;/code&gt; to the line &lt;code&gt;rw,relatime,data=ordered&lt;/code&gt; on the &lt;code&gt;/home&lt;/code&gt; partition in your &lt;code&gt;fstab&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;rw,relatime,data&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ordered,discard&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;enable-fan-and-temp-sensor-kernel-modules&quot;&gt;Enable fan and temp sensor kernel modules&lt;/h3&gt;
+
+&lt;p&gt;Apparently the fan and temperature sensor kernel modules aren’t enabled by default.&lt;/p&gt;
+
+&lt;p&gt;Easily fixed by adding &lt;code&gt;coretemp&lt;/code&gt; and &lt;code&gt;applesmc&lt;/code&gt; to &lt;code&gt;/etc/modules&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/modules&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;create-a-hostname-for-your-computer&quot;&gt;Create a hostname for your computer&lt;/h3&gt;
+
+&lt;p&gt;The hostname is what your computer will be referred to as. If you’ve seen &lt;code&gt;username@computername&lt;/code&gt; in terminals before, the computername section is what this hostname will be.&lt;/p&gt;
+
+&lt;p&gt;All you need to do is edit it and add your desired hostname. Just the name and nothing else.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/hostname&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You’ll also want to add the &lt;code&gt;hostname&lt;/code&gt; after both &lt;code&gt;localhost&lt;/code&gt; instances in your hosts file&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/hosts&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;make-initial-kernel--environment-to-open-partitions&quot;&gt;Make initial kernel / environment to open partitions&lt;/h3&gt;
+
+&lt;p&gt;Admittedly, this is where I get a bit lost but I believe we’re generating the Linux kernel for our OS? I don’t even know what I’m talking about but it’s the next step&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mkinitcpio -p linux&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;set-root-password&quot;&gt;Set root password&lt;/h3&gt;
+
+&lt;p&gt;Well, simply put, it’s the password used for the root account. You know, for using with &lt;code&gt;sudo&lt;/code&gt; and what not.&lt;/p&gt;
+
+&lt;p&gt;It’s as simple as running one command and entering in the password you’d like&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;passwd&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;preserve-lan-support-for-later&quot;&gt;Preserve LAN support for later&lt;/h3&gt;
+
+&lt;p&gt;I don’t recall the exact reason for this but I suppose it’s assumed after the upcoming restart that LAN support will be lost. I never had this issue but there’s no hard in it anyway.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pacman -S dhcpcd
+systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;dhcpcd&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;install-bootloader-for-macbook-pro&quot;&gt;Install bootloader for Macbook Pro&lt;/h3&gt;
+
+&lt;p&gt;Here is where things went sideways for me. As far as I’m aware, these are the correct commands for installing the UEFI bootloader (I never tried using grub2 which may fix this issue)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pacman -S dosfstools
+bootctl --path&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/boot install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;create-a-boot-entry&quot;&gt;Create a boot entry&lt;/h3&gt;
+
+&lt;p&gt;We need to make a new entry in the boot segment&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /boot/loader/entries/arch.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and then configure it by entering the following&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;title Arch Linux
+linux /vmlinuz-linux
+initrd /initramfs-linux.img
+options &lt;span class=&quot;nv&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sdb2 rw &lt;span class=&quot;nv&quot;&gt;elevator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;deadline quiet splash &lt;span class=&quot;nv&quot;&gt;resume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sdb3 &lt;span class=&quot;nv&quot;&gt;nmi_watchdog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once that’s all done, we then set Arch Linux as our default OS for loading like so&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;default arch&amp;quot;&lt;/span&gt; &amp;gt; /boot/loader/loader.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and reboot in order to carry on with the rest of the setup (Desktop environment and what not)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As I mentioned earlier though, I never got that far since my Macbook never played nice.&lt;/p&gt;
+
+&lt;p&gt;This may be of use to someone which is why it’s up there but against, &lt;strong&gt;I couldn’t guarantee this will work on your system even if I wanted to&lt;/strong&gt; so keep some extra alternative distros handy just in case you give up.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://help.ubuntu.com/community/MacBookPro&quot;&gt;Ubuntu&lt;/a&gt; and &lt;a href=&quot;https://wiki.archlinux.org/index.php/MacBook&quot;&gt;Arch&lt;/a&gt; wikis are good resources on where to go next as well as Google of course.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 19 Dec 2016 00:00:00 +1300</pubDate>
+        <link>http://blog.thingsima.de/2016/arch/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/arch/</guid>
+        
+        
+        <category>linux,</category>
+        
+        <category>experiments</category>
+        
+      </item>
+    
+      <item>
+        <title>Dear China, Can you please stop? Thanks</title>
+        <description>&lt;h2 id=&quot;the-one-time-i-actually-looked-at-our-router-logs&quot;&gt;The one time I actually looked at our router logs&lt;/h2&gt;
+
+&lt;p&gt;Seeing as I’m currently “funemployed” with my previous contract having ended toward the end of last week, I’ve been in the bad habit of staying up late. Well, staying up early rather.&lt;/p&gt;
+
+&lt;p&gt;The router in our flat had cut out one night at about 4am while I was reading up on some stuff so I thought nothing much of it and went to bed.&lt;/p&gt;
+
+&lt;p&gt;The next night, it happened again which I thought was odd timing so for once, I actually remembered that the router would be saving logs somewhere.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-the-heck-is-all-this&quot;&gt;What the heck is all this?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/logs.png&quot;&gt;&lt;img src=&quot;/assets/img/china/logs.png&quot; alt=&quot;The logs from our Nighthawk router&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, holy shit. That’s a lot of pings.&lt;/p&gt;
+
+&lt;p&gt;I will point out that &lt;code&gt;202.78.144.60&lt;/code&gt; is the static IP address for our router (and the IP address from which this blog is served) so it doesn’t count but everything else was completely foreign to me.&lt;/p&gt;
+
+&lt;p&gt;My first assumption was that it was probably some misconfigured IoT device somewhere in the world that had been infected.&lt;/p&gt;
+
+&lt;p&gt;I couldn’t say for sure but it really wouldn’t surprise me after seeing how many devices earlier this year had been infected by &lt;a href=&quot;https://en.wikipedia.org/wiki/Mirai_(malware)&quot;&gt;Mirai&lt;/a&gt; in the two large DDoS attacks earlier this year.&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-find-out-some-more-info&quot;&gt;Let’s find out some more info&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/abuseipdb.png&quot;&gt;&lt;img src=&quot;/assets/img/china/abuseipdb.png&quot; alt=&quot;A screenshot of Abuse IPDB showing the source as being from China&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;All of the addresses that I had a look at live somewhere in China. This one is allegedly in &lt;a href=&quot;https://en.wikipedia.org/wiki/Nanjing&quot;&gt;Nanjing&lt;/a&gt; while another was in &lt;a href=&quot;https://en.wikipedia.org/wiki/Shenzhen&quot;&gt;Shenzhen&lt;/a&gt; but who knows what effect the &lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Firewall&quot;&gt;Great Firewall&lt;/a&gt; could be having on geolocation.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/whois.png&quot;&gt;&lt;img src=&quot;/assets/img/china/whois.png&quot; alt=&quot;The whois segment from Abuse IPDB&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The whois segment gave some possible contact details so I tried sending them a nice friendly email to ask that they find whatever user or device is sending out these pings and disable it.&lt;/p&gt;
+
+&lt;h2 id=&quot;can-we-ask-them-to-stop&quot;&gt;Can we ask them to stop?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/bounceback.png&quot;&gt;&lt;img src=&quot;/assets/img/china/bounceback.png&quot; alt=&quot;The email I sent bounced back&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Probably not very surprising but two of the three addresses I tried resulted in failed attempts. Email concepts aren’t my strong point but it seems that they don’t have any &lt;a href=&quot;https://en.wikipedia.org/wiki/Sender_Policy_Framework&quot;&gt;SPF&lt;/a&gt; records configured.&lt;/p&gt;
+
+&lt;p&gt;Well, next stop is just talking to the mail server itself and seeing what it says about the email addresses in question!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/relay-denied.png&quot;&gt;&lt;img src=&quot;/assets/img/china/relay-denied.png&quot; alt=&quot;A terminal window with the mail server saying Relay access denied&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I remembered a neat trick I learnt a week or two back where you can get the mail records for a domain using &lt;code&gt;nslookup -q=MX [domain]&lt;/code&gt; and then just manually connect to them using &lt;code&gt;telnet [mail server] [port (usually 25)]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In particular, I just use it for seeing if email addresses exist or not (eg; for job applications) without having to actually send off an email.&lt;/p&gt;
+
+&lt;p&gt;In this case, it came in handy for seeing that the relay itself just didn’t want anything at all to do with me. I’m going to assume it’s because I’m trying to access it from outside of China but that’s 100% pure speculation and I have no idea what &lt;code&gt;Relay Access Denied&lt;/code&gt; means beyond what it says on the tin.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-else-can-we-find-out&quot;&gt;What else can we find out?&lt;/h2&gt;
+
+&lt;p&gt;Well, the last thing to try is good ol’ &lt;code&gt;nmap&lt;/code&gt;. Admittedly, it was the first thing I tried (most of this post is out of chronological order) but it also was the most surprising.&lt;/p&gt;
+
+&lt;p&gt;The first scan I did took 3 minutes and didn’t show much. Next, I ran two OS scans (&lt;code&gt;sudo nmap -O [ip]&lt;/code&gt;), one on my own computer and one from a much faster &lt;a href=&quot;http://amazonaws.com&quot;&gt;AWS&lt;/a&gt; server.&lt;/p&gt;
+
+&lt;p&gt;The AWS server finished first but didn’t have much to show. The scan on my own computer took 30(!!!) minutes to complete. I know routing can be a bit slow with the firewall and all but holy heck!&lt;/p&gt;
+
+&lt;p&gt;All I can say is, the results I got back were something I never expected&lt;/p&gt;
+
+&lt;h2 id=&quot;get-ready-for-a-wall-of-text-in-image-form&quot;&gt;Get ready for a wall of text (in image form)&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/nmap-p1.png&quot;&gt;&lt;img src=&quot;/assets/img/china/nmap-p1.png&quot; alt=&quot;Part 1 of the nmap scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/nmap-p2.png&quot;&gt;&lt;img src=&quot;/assets/img/china/nmap-p2.png&quot; alt=&quot;Part 2 of the nmap scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/nmap-p3.png&quot;&gt;&lt;img src=&quot;/assets/img/china/nmap-p3.png&quot; alt=&quot;Part 3 of the nmap scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/nmap-p4.png&quot;&gt;&lt;img src=&quot;/assets/img/china/nmap-p4.png&quot; alt=&quot;Part 4 of the nmap scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/china/nmap-p5.png&quot;&gt;&lt;img src=&quot;/assets/img/china/nmap-p5.png&quot; alt=&quot;Part 5 of the nmap scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Seeing as I’m a hobbyist, I don’t really use &lt;code&gt;nmap&lt;/code&gt; that much but I’ve never seen so many open ports in my life!&lt;/p&gt;
+
+&lt;p&gt;Interestingly enough, there’s a heap of ports lower than &lt;code&gt;1024&lt;/code&gt; open as well which generally require admin privileges to bind to.&lt;/p&gt;
+
+&lt;p&gt;Apparently, the services listed are just what &lt;code&gt;nmap&lt;/code&gt; associated with each port but isn’t necessarily what is running out of them. As far as learning about services though, this seems like a decent list to run off of.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-us-outta-here-scotty&quot;&gt;Get us outta here, scotty&lt;/h2&gt;
+
+&lt;p&gt;While the scan points to possibly a network switch, router, printer or even IoT thermometer of some sort, there’s not really much I can do about it unfortunately.&lt;/p&gt;
+
+&lt;p&gt;In the grand scheme of things though, this is likely happening to every other device connected to the internet anyway and it doesn’t really doing any harm.&lt;/p&gt;
+
+&lt;p&gt;It does make me wonder how many devices there must be to provide full coverage against my address almost every minute of the day when there’s just under 4.3 billion other IPv4 address that they could be hassling!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Dec 2016 00:00:00 +1300</pubDate>
+        <link>http://blog.thingsima.de/2016/china/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/china/</guid>
+        
+        
+        <category>networking</category>
+        
+      </item>
+    
+      <item>
+        <title>What&#39;s the deal with RaGaPa?</title>
+        <description>&lt;h2 id=&quot;what-the-heck-is-this-rubbish&quot;&gt;What the heck is this rubbish?&lt;/h2&gt;
+
+&lt;p&gt;So, I’m sitting at the library using the public WiFi and I visit an unsecured site.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ragapa/mot-injection.png&quot;&gt;&lt;img src=&quot;/assets/img/ragapa/mot-injection.png&quot; alt=&quot;Ministry of Transport face with injection in front of it&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bam, injected ad frame. What?!? I run Common Sense 2016, the most up to date antivirus available!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ragapa/thingsimade-injection.png&quot;&gt;&lt;img src=&quot;/assets/img/ragapa/thingsimade-injection.png&quot; alt=&quot;Even my own site had it since I disabled https&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Even my own site is suffering from this rather ugly defacement! Bah, and people think I’m silly for enabling https even on my static sites. If a site has it enabled, these ads can’t insert themselves midway.&lt;/p&gt;
+
+&lt;p&gt;I realised later on that I had removed &lt;a href=&quot;https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en&quot;&gt;uBlock Origin&lt;/a&gt; while testing out some different extensions, and forgotten to reinstall it, which is why I’d never seen these injections before.&lt;/p&gt;
+
+&lt;h2 id=&quot;if-its-not-me-maybe-its-the-network&quot;&gt;If it’s not me, maybe it’s the network!&lt;/h2&gt;
+
+&lt;p&gt;I had a look in my extensions. Nothing out of place there. A quick poke around the most obvious places turned up zilch so perhaps it was someone, or something on the network?&lt;/p&gt;
+
+&lt;p&gt;I spun up &lt;a href=&quot;https://wireshark.org&quot;&gt;Wireshark&lt;/a&gt; and watched the network spew out heaps of requests. It was a public city WiFi after all but thankfully, you can filter by &lt;code&gt;http&lt;/code&gt; to gain some more clarity.&lt;/p&gt;
+
+&lt;p&gt;Oooh, what’s that?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ragapa/wireshark.png&quot;&gt;&lt;img src=&quot;/assets/img/ragapa/wireshark.png&quot; alt=&quot;The Wireshark captures from Wellington Library&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hmm, &lt;code&gt;GET /api/adscript.jsp&lt;/code&gt;? That looks promising.&lt;/p&gt;
+
+&lt;p&gt;Perhaps an infected device is serving it up? What if it’s someone hijacking unsecured requests and inserting their own monetisation? I gotta know more!&lt;/p&gt;
+
+&lt;p&gt;Thanks to my rookie skills with nmap, I remembered that I could run a scan on it, not just for open ports but also details about its OS as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ragapa/cbdfree-nmap.png&quot;&gt;&lt;img src=&quot;/assets/img/ragapa/cbdfree-nmap.png&quot; alt=&quot;nmap output from the Wellington Library scan&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Too many fingerprints match this host to give specific OS details.&lt;/code&gt; Well, so much for that approach.&lt;/p&gt;
+
+&lt;p&gt;Maybe the actual ad script itself can give me some clues?&lt;/p&gt;
+
+&lt;h2 id=&quot;its-usually-quicker-if-you-look-at-whats-right-in-front-of-you&quot;&gt;It’s usually quicker if you look at what’s right in front of you&lt;/h2&gt;
+
+&lt;p&gt;I loaded up a non-secure site and poked around the DOM.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ragapa/script.png&quot;&gt;&lt;img src=&quot;/assets/img/ragapa/script.png&quot; alt=&quot;Developer tools in Google Chrome showing injected Javascript&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oh… That address has &lt;a href=&quot;http://www.citylink.co.nz/&quot;&gt;Citylink Wellington&lt;/a&gt; in it who run the actual network itself. I guess it’s nothing malicious after all but still a pain in the ass.&lt;/p&gt;
+
+&lt;p&gt;I kept coming across &lt;code&gt;ragapa&lt;/code&gt; references, such as &lt;code&gt;div class=ragapaBottomImage&lt;/code&gt; and &lt;code&gt;script src=http://adapi.ragapa.com&lt;/code&gt; but in wanting to play with Wireshark, I skipped the obvious path of just searching the name. How is that any fun though!&lt;/p&gt;
+
+&lt;p&gt;It didn’t take me long before I found an article about RaGaPa.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/ragapa/ragapa-article.png&quot;&gt;&lt;img src=&quot;/assets/img/ragapa/ragapa-article.png&quot; alt=&quot;An article about the RaGaPa ad injection device&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;They’re a company who provide devices that inject ads into WiFi hotspots. In this case, the entire city wide WiFi hotspot called &lt;code&gt;cbdfree&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;i-want-to-make-it-go-away&quot;&gt;I want to make it go away.&lt;/h2&gt;
+
+&lt;p&gt;Well, the good news is that there are ad blockers for exactly that! Chances are, if you use Adblock, you’re using Easylist which was merged with a list maintained by New Zealand’s very own &lt;a href=&quot;https://fanboy.co.nz/&quot;&gt;Fanboy List&lt;/a&gt;. He actually had RaGaPa’s site in his list so more or less every instance of Adblock will block it by default.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 30 Nov 2016 00:00:00 +1300</pubDate>
+        <link>http://blog.thingsima.de/2016/ragapa/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/ragapa/</guid>
+        
+        
+        <category>networking</category>
+        
+      </item>
+    
+      <item>
+        <title>RailTalk</title>
+        <description>&lt;p&gt;The other day, I was at the Wellington Train Station and I noticed something funny was up with the monitors that display the timetables.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/railtalk/announcements.jpg&quot;&gt;&lt;img src=&quot;/assets/img/railtalk/announcements.jpg&quot; alt=&quot;The Metlink schedule of upcoming automated announcements&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yeah! Those totally look like commands that a program would read! I would call it a rare glimpse into how they automate the voicing.&lt;/p&gt;
+
+&lt;p&gt;Here’s another photo from shortly after.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/railtalk/railtalk.jpg&quot;&gt;&lt;img src=&quot;/assets/img/railtalk/railtalk.jpg&quot; alt=&quot;A photo of the RailTalk application name&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll notice a macOS program called RailTalk. For the life of me, I can’t find any information about it.&lt;/p&gt;
+
+&lt;p&gt;Out of curosity, I emailed &lt;a href=&quot;http://metlink.org.nz&quot;&gt;Metlink&lt;/a&gt; to see if they could tell me more about it.&lt;/p&gt;
+
+&lt;p&gt;It was only a day ago so I haven’t heard anything yet but I’ll keep you updated.&lt;/p&gt;
+
+&lt;h3 id=&quot;update-1&quot;&gt;Update 1&lt;/h3&gt;
+
+&lt;p&gt;The Metlink Service Centre replied, informing me that the train operator &lt;a href=&quot;http://transdevwellington.co.nz&quot;&gt;Transdev&lt;/a&gt; would be able to shed some more light on my question.&lt;/p&gt;
+
+&lt;p&gt;It’s currently Saturday so it’s unlikely I’ll have any updates but at least we’re headed in the right direction!&lt;/p&gt;
+
+&lt;h3 id=&quot;update-2&quot;&gt;Update 2&lt;/h3&gt;
+
+&lt;p&gt;I’m just doing an update for this while I move my blog across to its current platform.&lt;/p&gt;
+
+&lt;p&gt;I never heard back from Transdev, even though they sent an automated email saying I would hear a response within 5 days.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 06 Oct 2016 00:00:00 +1300</pubDate>
+        <link>http://blog.thingsima.de/2016/railtalk/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/railtalk/</guid>
+        
+        
+        <category>curiosity</category>
+        
+      </item>
+    
+  </channel>
+</rss>

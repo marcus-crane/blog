@@ -1,22 +1,61 @@
-# Blog details (rendered in the header)
+
+# SEO settings
 title: UTF-9000
-description: Sometimes I get lost in cyberspace so it's about time I share my findings!
+description: "Sometimes I get lost in cyberspace so it's about time I share my findings!"
+keywords: "utf-9000, junior developer, cyberspace"
+url: http://blog.thingsima.de
+baseurl: null
 
-# Pathing information
-baseurl: ""
-url: "http://blog.thingsima.de"
-
-# Contact details (for the footer)
-email: marcus@thingsima.de
-linkedin: placeholderurl
-steam: sandtree
-twitter: ethernetsalad
-github: marcus-crane
+google_analytics: UA-52446115-1
+repo: http://github.com/marcus-crane/marcus-crane.github.io
+disqus_shortname: ""
 
 # Build settings
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : pygments
+
+paginate: 4
+paginate_path: "/page/:num/"
+comments: true
+
+source: source
 destination: docs
-markdown: kramdown
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - CNAME
+
+# Sass configuration
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+# Author settings
+author:
+  name     : Marcus Crane
+  title      : hobbyist developer
+  available: true
+  bio      : "Sometimes I get lost in cyberspace so it's about time I share my findings!"
+  location : "Wellington, NZ."
+  thumb    : null
+  email    : marcus@thingsima.de
+  url      : http://thingsima.de
+  github   : http://github.com/marcus-crane
+  twitter  : http://twitter.com/ethernetsalad
+  linkedin : http://linkedin.com/in/placeholderurl
+
+
+# social settings
+og_locale: "en_NZ"
+twitter_card: "summary_large_image"
+twitter_site: "@nandomoreirame"
+
+gems:
+  - bourbon
+  - jekyll-paginate
+
+# navbar pages
+navbar:
+  - slug : about
+    title: About
+  - slug : blog
+    title: Blog
+
+exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
