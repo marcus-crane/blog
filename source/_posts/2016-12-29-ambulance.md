@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ambulance WiFi Hotspot
-date: 1st January, 2017
+date: January 1, 2017
 categories: networking
 comments: false
 ---

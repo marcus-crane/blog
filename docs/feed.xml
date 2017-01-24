@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UTF-9000</title>
-    <description>Sometimes I get lost in cyberspace so it&#39;s about time I share my findings!</description>
-    <link>http://blog.thingsima.de/</link>
-    <atom:link href="http://blog.thingsima.de/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Jan 2017 20:13:24 +1300</pubDate>
-    <lastBuildDate>Sun, 22 Jan 2017 20:13:24 +1300</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <description>Sometimes I get lost in cyberspace so it's about time I share my findings!</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 24 Jan 2017 22:32:54 +1300</pubDate>
+    <lastBuildDate>Tue, 24 Jan 2017 22:32:54 +1300</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>An important note about /etc/rc.local</title>
@@ -19,6 +19,8 @@
 
 &lt;p&gt;Most forum posts I’ve seen state that all you need to do is &lt;code&gt;sudo nano /etc/rc.local&lt;/code&gt; and add whatever commands you want. Great! Turns out that I’d been blissfully unaware for quite a while now that it wasn’t actually working.&lt;/p&gt;
 
+&lt;p&gt;Each time, I would accidentally overwrite &lt;code&gt;rc.local&lt;/code&gt; instead of appending to it. Woops!&lt;/p&gt;
+
 &lt;p&gt;Keep in mind I’m like an alcoholic when it comes to trying out Linux distros so I never stuck with one long enough to take much notice.&lt;/p&gt;
 
 &lt;p&gt;I looked into it today though and it turns out I was missing a shebang at the top of the file and some proper file permissions.&lt;/p&gt;
@@ -27,15 +29,15 @@
 
 &lt;p&gt;As for the file itself, mine looks like this at the moment:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh -e&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/bin/sh -e&lt;/span&gt;
 
-&lt;span class=&quot;c&quot;&gt;# Fix tilde key on startup&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &amp;gt; /sys/module/hid_apple/parameters/iso_layout
+&lt;span class=&quot;c1&quot;&gt;# Fix tilde key on startup&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &amp;gt; /sys/module/hid_apple/parameters/iso_layout
 
-&lt;span class=&quot;c&quot;&gt;# Auto tune battery life&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Auto tune battery life&lt;/span&gt;
 powertop --auto-tune
 
-&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Those two scripts should &lt;code&gt;exit&lt;/code&gt; with a status of &lt;code&gt;0&lt;/code&gt; anyway but there’s no harm in making sure.&lt;/p&gt;
 
@@ -48,9 +50,9 @@ powertop --auto-tune
   &lt;li&gt;&lt;a href=&quot;http://unix.stackexchange.com/questions/49626/purpose-and-typical-usage-of-etc-rc-local&quot;&gt;Purpose and typical usage of /etc/rc.local&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Sun, 22 Jan 2017 00:00:00 +1300</pubDate>
-        <link>http://blog.thingsima.de/2017/rc.local/</link>
-        <guid isPermaLink="true">http://blog.thingsima.de/2017/rc.local/</guid>
+        <pubDate>Tue, 24 Jan 2017 00:00:00 +1300</pubDate>
+        <link>http://localhost:4000/2017/rc.local/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/rc.local/</guid>
         
         
         <category>linux,</category>
@@ -96,8 +98,8 @@ powertop --auto-tune
 &lt;p&gt;Well, that certainly more interesting than I expected. I didn’t get a chance to gather much information when the ambulances were there. I popped on a scan and then got sidetracked with troubleshooting my parents desktop. Despite that, it looks like this was another successful round of detective work!&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +1300</pubDate>
-        <link>http://blog.thingsima.de/2017/ambulance/</link>
-        <guid isPermaLink="true">http://blog.thingsima.de/2017/ambulance/</guid>
+        <link>http://localhost:4000/2017/ambulance/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/ambulance/</guid>
         
         
         <category>networking</category>
@@ -124,7 +126,7 @@ powertop --auto-tune
 
 &lt;p&gt;By default, your &lt;code&gt;~&lt;/code&gt; key will spit out a &lt;code&gt;&amp;lt;&lt;/code&gt; so we need to fix that&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;touch /etc/rc.local
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;touch /etc/rc.local
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;echo 0 &amp;gt; /sys/module/hid_apple/parameters/iso_layout&amp;quot;&lt;/span&gt; &amp;gt; /etc/rc.local
 &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/rc.local&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -134,7 +136,7 @@ powertop --auto-tune
 
 &lt;p&gt;Next up, we need to connect to WiFi. You can manually use things like the &lt;code&gt;wpa_supplicant.conf&lt;/code&gt; file but the built in &lt;code&gt;wifi-menu&lt;/code&gt; command is way easier.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;wifi-menu&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;wifi-menu&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Once you’ve set up a profile and connected, you can check that you have an IP address assigned with &lt;code&gt;ip addr&lt;/code&gt; and then ping google to check that you’re receiving data with &lt;code&gt;ping google.com -c 3&lt;/code&gt;&lt;/p&gt;
 
@@ -158,12 +160,12 @@ powertop --auto-tune
 
 &lt;p&gt;As far as the different between UEFI and BIOS requirements, I’m still learning but you’d use GPT with UEFI in order to be able to make an EFI partition?&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mklabel gpt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;mklabel gpt
 mkpart ESP fat32 1MiB 500MiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/boot&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; boot on
-mkpart primary ext4 500MiB 20.5GiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-mkpart primary linux-swap 20.5GiB 28GiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;swap&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-mkpart primary ext4 28GiB 100% &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/home&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; boot on
+mkpart primary ext4 500MiB &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;.5GiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+mkpart primary linux-swap &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;.5GiB 28GiB &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;swap&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+mkpart primary ext4 28GiB &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;% &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/home&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 Ctrl + C&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Once that’s done, checking &lt;code&gt;fdisk -l&lt;/code&gt; again should show the partition setup like so:&lt;/p&gt;
@@ -202,7 +204,7 @@ Ctrl + C&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now that we’ve specificied the partitions, we actually need to make some file systems for them and activate the swap partition:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mkfs.vfat -F32 /dev/sdb1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/boot&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;mkfs.vfat -F32 /dev/sdb1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/boot&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 mkfs.ext4 /dev/sdb2 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 mkswap /dev/sdb3 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;swap&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 swapon /dev/sdb3
@@ -212,7 +214,7 @@ mkfs.ext4 /dev/sdb4 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;/home&lt;span 
 
 &lt;p&gt;With our filesystems created and swap partition activated, we can mount the filesystems in order to start installing our operating system&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mount /dev/sdb2 /mnt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;mount /dev/sdb2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sdb1 /mnt/boot
 mkdir -p /mnt/home
@@ -224,7 +226,7 @@ mount /dev/sdb4 /mnt/home&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;With the filesystems mounted, it’s time to install the base Arch packages&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pacstrap /mnt base base-devel&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;pacstrap /mnt base base-devel&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;fiddly-setup-bits-and-pieces&quot;&gt;Fiddly setup bits and pieces&lt;/h3&gt;
 
@@ -232,7 +234,7 @@ mount /dev/sdb4 /mnt/home&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;We’ll want to generate an fstab template to &lt;code&gt;/etc/fstab&lt;/code&gt; for later so we can name our filesystems and then use &lt;code&gt;arch-chroot&lt;/code&gt; to get bash working&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
 arch-chroot /mnt /bin/bash&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Next we’ll generate our locale. When you edit &lt;code&gt;/etc/locale.gen&lt;/code&gt;, you’ll see every available locale and you just need to uncomment your respective one. For me, it’s &lt;code&gt;en_NZ.UTF-8&lt;/code&gt;.&lt;/p&gt;
@@ -241,15 +243,15 @@ arch-chroot /mnt /bin/bash&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Generate locale&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/locale.gen
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;nano /etc/locale.gen
 locale-gen
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;locale&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &amp;gt; /etc/locale.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;locale&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &amp;gt; /etc/locale.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;I hope it goes without saying that &lt;strong&gt;{locale} is a placeholder. Swap it with your own locale eg: &lt;code&gt;LANG=en_NZ.UTF-8&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Next, we’ll be setting our timezones. Again, just swap NZ for your country code.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;ln -sf /usr/share/zoneinfo/NZ /etc/localtime
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/share/zoneinfo/NZ /etc/localtime
 hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;fix-boot-order-and-optimise-ssd&quot;&gt;Fix boot order and optimise SSD&lt;/h3&gt;
@@ -260,11 +262,11 @@ hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;You’ll want to edit fstab and make sure they’re set correctly.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/fstab&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;nano /etc/fstab&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;For some optional optimisation (no idea what, I just saw this somewhere along the way), you can add &lt;code&gt;discard&lt;/code&gt; to the line &lt;code&gt;rw,relatime,data=ordered&lt;/code&gt; on the &lt;code&gt;/home&lt;/code&gt; partition in your &lt;code&gt;fstab&lt;/code&gt; file.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;rw,relatime,data&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ordered,discard&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;rw,relatime,data&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ordered,discard&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;enable-fan-and-temp-sensor-kernel-modules&quot;&gt;Enable fan and temp sensor kernel modules&lt;/h3&gt;
 
@@ -272,7 +274,7 @@ hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Easily fixed by adding &lt;code&gt;coretemp&lt;/code&gt; and &lt;code&gt;applesmc&lt;/code&gt; to &lt;code&gt;/etc/modules&lt;/code&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/modules&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;nano /etc/modules&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;create-a-hostname-for-your-computer&quot;&gt;Create a hostname for your computer&lt;/h3&gt;
 
@@ -280,17 +282,17 @@ hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;All you need to do is edit it and add your desired hostname. Just the name and nothing else.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/hostname&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;nano /etc/hostname&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;You’ll also want to add the &lt;code&gt;hostname&lt;/code&gt; after both &lt;code&gt;localhost&lt;/code&gt; instances in your hosts file&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /etc/hosts&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;nano /etc/hosts&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;make-initial-kernel--environment-to-open-partitions&quot;&gt;Make initial kernel / environment to open partitions&lt;/h3&gt;
 
 &lt;p&gt;Admittedly, this is where I get a bit lost but I believe we’re generating the Linux kernel for our OS? I don’t even know what I’m talking about but it’s the next step&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mkinitcpio -p linux&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;mkinitcpio -p linux&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;set-root-password&quot;&gt;Set root password&lt;/h3&gt;
 
@@ -298,44 +300,44 @@ hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;It’s as simple as running one command and entering in the password you’d like&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;passwd&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;passwd&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;preserve-lan-support-for-later&quot;&gt;Preserve LAN support for later&lt;/h3&gt;
 
 &lt;p&gt;I don’t recall the exact reason for this but I suppose it’s assumed after the upcoming restart that LAN support will be lost. I never had this issue but there’s no hard in it anyway.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pacman -S dhcpcd
-systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;dhcpcd&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;pacman -S dhcpcd
+systemctl &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt; dhcpcd&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;install-bootloader-for-macbook-pro&quot;&gt;Install bootloader for Macbook Pro&lt;/h3&gt;
 
 &lt;p&gt;Here is where things went sideways for me. As far as I’m aware, these are the correct commands for installing the UEFI bootloader (I never tried using grub2 which may fix this issue)&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pacman -S dosfstools
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;pacman -S dosfstools
 bootctl --path&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/boot install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;create-a-boot-entry&quot;&gt;Create a boot entry&lt;/h3&gt;
 
 &lt;p&gt;We need to make a new entry in the boot segment&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;nano /boot/loader/entries/arch.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;nano /boot/loader/entries/arch.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;and then configure it by entering the following&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;title Arch Linux
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options &lt;span class=&quot;nv&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sda2 rw &lt;span class=&quot;nv&quot;&gt;elevator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;deadline quiet splash &lt;span class=&quot;nv&quot;&gt;resume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sda3 &lt;span class=&quot;nv&quot;&gt;nmi_watchdog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+options &lt;span class=&quot;nv&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sda2 rw &lt;span class=&quot;nv&quot;&gt;elevator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;deadline quiet splash &lt;span class=&quot;nv&quot;&gt;resume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sda3 &lt;span class=&quot;nv&quot;&gt;nmi_watchdog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Yes, I reference &lt;code&gt;sda&lt;/code&gt; and not &lt;code&gt;sdb&lt;/code&gt; here. For whatever reason, the drive swaps to being &lt;code&gt;/dev/sda&lt;/code&gt; once the install is completed and you reboot. This is what originally gave me trouble. I was referencing &lt;code&gt;/dev/sdb&lt;/code&gt; which didn’t exist anymore.&lt;/p&gt;
 
 &lt;p&gt;Once that’s all done, we then set Arch Linux as our default OS for loading like so&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;default arch&amp;quot;&lt;/span&gt; &amp;gt; /boot/loader/loader.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;default arch&amp;quot;&lt;/span&gt; &amp;gt; /boot/loader/loader.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;and reboot in order to carry on with the rest of the setup (Desktop environment and what not)&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
 reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;At this point, rebooting should give you the basics of an operating system but it won’t be enough to use on a daily basis.&lt;/p&gt;
@@ -343,8 +345,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;The &lt;a href=&quot;https://help.ubuntu.com/community/MacBookPro&quot;&gt;Ubuntu&lt;/a&gt; and &lt;a href=&quot;https://wiki.archlinux.org/index.php/MacBook&quot;&gt;Arch&lt;/a&gt; wikis are good resources on where to go next as well as Google of course.&lt;/p&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +1300</pubDate>
-        <link>http://blog.thingsima.de/2016/arch/</link>
-        <guid isPermaLink="true">http://blog.thingsima.de/2016/arch/</guid>
+        <link>http://localhost:4000/2016/arch/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/arch/</guid>
         
         
         <category>linux,</category>
@@ -438,8 +440,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;It does make me wonder how many devices there must be to provide full coverage against my address almost every minute of the day when there’s just under 4.3 billion other IPv4 address that they could be hassling!&lt;/p&gt;
 </description>
         <pubDate>Thu, 08 Dec 2016 00:00:00 +1300</pubDate>
-        <link>http://blog.thingsima.de/2016/china/</link>
-        <guid isPermaLink="true">http://blog.thingsima.de/2016/china/</guid>
+        <link>http://localhost:4000/2016/china/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/china/</guid>
         
         
         <category>networking</category>
@@ -447,7 +449,7 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
       </item>
     
       <item>
-        <title>What&#39;s the deal with RaGaPa?</title>
+        <title>What's the deal with RaGaPa?</title>
         <description>&lt;h2 id=&quot;what-the-heck-is-this-rubbish&quot;&gt;What the heck is this rubbish?&lt;/h2&gt;
 
 &lt;p&gt;So, I’m sitting at the library using the public WiFi and I visit an unsecured site.&lt;/p&gt;
@@ -505,8 +507,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;Well, the good news is that there are ad blockers for exactly that! Chances are, if you use Adblock, you’re using Easylist which was merged with a list maintained by New Zealand’s very own &lt;a href=&quot;https://fanboy.co.nz/&quot;&gt;Fanboy List&lt;/a&gt;. He actually had RaGaPa’s site in his list so more or less every instance of Adblock will block it by default.&lt;/p&gt;
 </description>
         <pubDate>Wed, 30 Nov 2016 00:00:00 +1300</pubDate>
-        <link>http://blog.thingsima.de/2016/ragapa/</link>
-        <guid isPermaLink="true">http://blog.thingsima.de/2016/ragapa/</guid>
+        <link>http://localhost:4000/2016/ragapa/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/ragapa/</guid>
         
         
         <category>networking</category>
@@ -544,8 +546,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;I never heard back from Transdev, even though they sent an automated email saying I would hear a response within 5 days.&lt;/p&gt;
 </description>
         <pubDate>Thu, 06 Oct 2016 00:00:00 +1300</pubDate>
-        <link>http://blog.thingsima.de/2016/railtalk/</link>
-        <guid isPermaLink="true">http://blog.thingsima.de/2016/railtalk/</guid>
+        <link>http://localhost:4000/2016/railtalk/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/railtalk/</guid>
         
         
         <category>curiosity</category>
