@@ -3,10 +3,10 @@
   <channel>
     <title>UTF-9000</title>
     <description>Sometimes I get lost in cyberspace so it's about time I share my findings!</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2017 22:32:54 +1300</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2017 22:32:54 +1300</lastBuildDate>
+    <link>http://blog.thingsima.de/</link>
+    <atom:link href="http://blog.thingsima.de/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 24 Jan 2017 22:35:49 +1300</pubDate>
+    <lastBuildDate>Tue, 24 Jan 2017 22:35:49 +1300</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -51,8 +51,8 @@ powertop --auto-tune
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 24 Jan 2017 00:00:00 +1300</pubDate>
-        <link>http://localhost:4000/2017/rc.local/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/rc.local/</guid>
+        <link>http://blog.thingsima.de/2017/rc.local/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2017/rc.local/</guid>
         
         
         <category>linux,</category>
@@ -98,8 +98,8 @@ powertop --auto-tune
 &lt;p&gt;Well, that certainly more interesting than I expected. I didn’t get a chance to gather much information when the ambulances were there. I popped on a scan and then got sidetracked with troubleshooting my parents desktop. Despite that, it looks like this was another successful round of detective work!&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +1300</pubDate>
-        <link>http://localhost:4000/2017/ambulance/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/ambulance/</guid>
+        <link>http://blog.thingsima.de/2017/ambulance/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2017/ambulance/</guid>
         
         
         <category>networking</category>
@@ -345,8 +345,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;The &lt;a href=&quot;https://help.ubuntu.com/community/MacBookPro&quot;&gt;Ubuntu&lt;/a&gt; and &lt;a href=&quot;https://wiki.archlinux.org/index.php/MacBook&quot;&gt;Arch&lt;/a&gt; wikis are good resources on where to go next as well as Google of course.&lt;/p&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +1300</pubDate>
-        <link>http://localhost:4000/2016/arch/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/arch/</guid>
+        <link>http://blog.thingsima.de/2016/arch/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/arch/</guid>
         
         
         <category>linux,</category>
@@ -440,8 +440,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;It does make me wonder how many devices there must be to provide full coverage against my address almost every minute of the day when there’s just under 4.3 billion other IPv4 address that they could be hassling!&lt;/p&gt;
 </description>
         <pubDate>Thu, 08 Dec 2016 00:00:00 +1300</pubDate>
-        <link>http://localhost:4000/2016/china/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/china/</guid>
+        <link>http://blog.thingsima.de/2016/china/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/china/</guid>
         
         
         <category>networking</category>
@@ -507,8 +507,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;Well, the good news is that there are ad blockers for exactly that! Chances are, if you use Adblock, you’re using Easylist which was merged with a list maintained by New Zealand’s very own &lt;a href=&quot;https://fanboy.co.nz/&quot;&gt;Fanboy List&lt;/a&gt;. He actually had RaGaPa’s site in his list so more or less every instance of Adblock will block it by default.&lt;/p&gt;
 </description>
         <pubDate>Wed, 30 Nov 2016 00:00:00 +1300</pubDate>
-        <link>http://localhost:4000/2016/ragapa/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/ragapa/</guid>
+        <link>http://blog.thingsima.de/2016/ragapa/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/ragapa/</guid>
         
         
         <category>networking</category>
@@ -546,8 +546,8 @@ reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;I never heard back from Transdev, even though they sent an automated email saying I would hear a response within 5 days.&lt;/p&gt;
 </description>
         <pubDate>Thu, 06 Oct 2016 00:00:00 +1300</pubDate>
-        <link>http://localhost:4000/2016/railtalk/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/railtalk/</guid>
+        <link>http://blog.thingsima.de/2016/railtalk/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2016/railtalk/</guid>
         
         
         <category>curiosity</category>
