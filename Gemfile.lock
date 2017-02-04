@@ -219,6 +219,7 @@ DEPENDENCIES
   html-proofer
   jekyll
   jekyll-paginate
+  json
   pygments.rb
   sass
 
