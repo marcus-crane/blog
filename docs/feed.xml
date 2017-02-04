@@ -5,9 +5,68 @@
     <description>Sometimes I get lost in cyberspace so it's about time I share my findings!</description>
     <link>http://blog.thingsima.de/</link>
     <atom:link href="http://blog.thingsima.de/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2017 22:35:49 +1300</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2017 22:35:49 +1300</lastBuildDate>
+    <pubDate>Sun, 05 Feb 2017 03:51:30 +1300</pubDate>
+    <lastBuildDate>Sun, 05 Feb 2017 03:51:30 +1300</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Speeding up Deepin Linux</title>
+        <description>&lt;p&gt;A few weeks back, I tried out &lt;a href=&quot;https://www.deepin.org/en/&quot;&gt;Deepin Linux&lt;/a&gt; and it’s actually quite nice! It definitely has one of the nicest desktop environments that I’ve seen from a Linux distro and yes, perhaps even more so than &lt;a href=&quot;https://elementary.io/&quot;&gt;elementary OS&lt;/a&gt; in my opinion.&lt;/p&gt;
+
+&lt;p&gt;Now that said, it also has a few major issues but nothing that can’t be fixed.&lt;/p&gt;
+
+&lt;h3 id=&quot;package-mirrors-are-broken&quot;&gt;Package mirrors are broken&lt;/h3&gt;
+
+&lt;p&gt;By default, Deepin ships with the official CDN mirror enabled and holy heck is it slow. I’m talking outright unusable but that’s not so bad because there’s a mirror selector…&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/deepin/packageselector.jpg&quot;&gt;&lt;img src=&quot;/assets/img/deepin/packageselector.jpg&quot; alt=&quot;A screenshot of the built in package mirror selector&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;that does absolutely nothing. Click any mirror you like but nothing will actually change.&lt;/p&gt;
+
+&lt;p&gt;It’s not like it would matter anyway because there’s not a single mirror that my network considers “Fast”.&lt;/p&gt;
+
+&lt;p&gt;The Australian mirror, which Deepin blogged about adding to the list would be faster if they had actually added it to the official list or even the OS.&lt;/p&gt;
+
+&lt;p&gt;Let’s fix that! I’ll assume you know at least how to use a terminal and &lt;code&gt;nano&lt;/code&gt; if you’re reading this.&lt;/p&gt;
+
+&lt;p&gt;You’ll want to head to &lt;code&gt;/apt/&lt;/code&gt; and open up &lt;code&gt;sources.list&lt;/code&gt; with &lt;code&gt;nano sources.list&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;You should see a file that looks like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;deb &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;by-hash&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;force&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; http://packages.deepin/deepin unstable main contrib non-free
+deb-src http://packages.deepin.com/deepin unstable main contrib non-free&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Depending on where you live, you’ll want to visit the mirror list &lt;a href=&quot;https://www.deepin.org/en/mirrors/packages/&quot;&gt;here&lt;/a&gt; and choose whichever is closest to you.&lt;/p&gt;
+
+&lt;p&gt;The Australian Colocity Mirror can be found &lt;a href=&quot;http://mirror.colocity.com/deepin/&quot;&gt;here&lt;/a&gt; and still isn’t listed on the site which is a pain.&lt;/p&gt;
+
+&lt;p&gt;Simply comment out the two entries &lt;code&gt;sources.list&lt;/code&gt; and create a new line that swaps out the URL for the nearby mirror.&lt;/p&gt;
+
+&lt;p&gt;Mine looks like so with the Japanese mirror included (but commented out) just in case I might ever need a package that hasn’t been updated for example.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# A nice and fast Australian mirror&lt;/span&gt;
+deb http://mirror.colocity.com/deepin unstable main contrib non-free
+
+&lt;span class=&quot;c1&quot;&gt;# Tsukuba WIDE Public Mirror Service&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# deb http://ftp.tsukuba.wide.ad.jp/Linux/deepin unstable main contrib non-free&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Slow as heck official mirror (don&amp;#39;t even bother...)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# deb [by-hash=force] http://packages.deepin/deepin unstable main contrib non-free&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# deb-src http://packages.deepin.com/deepin unstable main contrib non-free&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I feel like there was some other issue I had but I can’t remember since I don’t actually have Deepin installed anymore. I didn’t get bored of it, I just needed macOS again (and graphics drivers + battery life) for some stuff.&lt;/p&gt;
+
+&lt;p&gt;Oh and while it may be tempting since Deepin is based on Debian, DO NOT use the Debian mirrors because, as I found out, they’ll detect unknown packages like your desktop environment, file manager etc and rip them all out leaving you screwed!&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 05 Feb 2017 00:00:00 +1300</pubDate>
+        <link>http://blog.thingsima.de/2017/deepin/</link>
+        <guid isPermaLink="true">http://blog.thingsima.de/2017/deepin/</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
     
       <item>
         <title>An important note about /etc/rc.local</title>
