@@ -7,7 +7,7 @@ url: http://blog.thingsima.de
 baseurl: null
 
 google_analytics: UA-52446115-1
-repo: http://github.com/marcus-crane/marcus-crane.github.io
+repo: http://github.com/marcus-crane/blog
 disqus_shortname: ""
 
 # Build settings
@@ -30,7 +30,7 @@ sass:
 # Author settings
 author:
   name     : Marcus Crane
-  title      : hobbyist developer
+  title    : hobbyist developer
   available: true
   bio      : "Sometimes I get lost in cyberspace so it's about time I share my findings!"
   location : "Wellington, NZ."
@@ -39,13 +39,12 @@ author:
   url      : http://thingsima.de
   github   : http://github.com/marcus-crane
   twitter  : http://twitter.com/ethernetsalad
-  linkedin : http://linkedin.com/in/placeholderurl
 
 
 # social settings
 og_locale: "en_NZ"
 twitter_card: "summary_large_image"
-twitter_site: "@nandomoreirame"
+twitter_site: "@ethernetsalad"
 
 gems:
   - bourbon
