@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ambulance WiFi Hotspots"
+title: Ambulance WiFi Hotspots
 date: 2017-01-01
 categories: networking wifi
 ---
