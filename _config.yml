@@ -1,9 +1,0 @@
-name: UTF-9000
-url: https://blog.thingsima.de
-description: You'll never know if it's good until you read something!
-
-permalink: /:year/:title/
-paginate: 10
-
-gems: [jekyll-paginate]
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
