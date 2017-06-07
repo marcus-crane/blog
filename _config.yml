@@ -2,14 +2,13 @@
 title: UTF-9000
 description: Without you to read it, this blog is just a bunch of markdown files.
 url: http://localhost:4000
-logo: halve.png                                       # Site logo
+logo: halve.png
 locale: en_NZ
 
 # Left Block Images
 background:
-  homepage: images/home.png                           # this image will be shown on homepage's left block
-  post-list: images/unsplash-image-10.jpg             # this image will be shown on post list page
-  default-post: images/unsplash-gallery-image-3.jpg   # this image will be shown when post's front matter doesn't specify any image
+  homepage: images/home.jpg
+  default-post: images/post.jpg
 
 # Jekyll
 permalink:          /:year/:title/
@@ -26,33 +25,14 @@ sass:
   style:            compressed
 
 # Google Analytics
-#google-analytics: UA-XXXXX-Y
+google-analytics: UA-25776766-13
 
 # Social Links
 email:             marcus+blog@thingsima.de
-#google.plus:        username
 twitter:            sentreh
-#facebook:           username
 github:             marcus-crane
-#stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 linkedin:          marcus-crane
-#xing:              username
-#instagram:          username
-#lastfm:            username
-#tumblr:            username
-#pinterest:         username
-#foursquare:        username
-steam:              sentryism
-#dribbble:          username
-#youtube:           username
-#soundcloud:        username
-#weibo:             username
-#flickr:            username
-#codepen:           username
-#keybase:           username
-#xmpp:              username@server.com
-#hackernews:        username
-#behance:           username
+steam:              sandtree
 
 # Gems
 gems:
