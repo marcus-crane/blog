@@ -1,45 +1,38 @@
-# Site
 title: UTF-9000
 description: Without you to read it, this blog is just a bunch of markdown files.
 url: http://localhost:4000
 logo: halve.png
 locale: en_NZ
 
-# Left Block Images
 background:
-  homepage: images/home.jpg
-  default-post: images/post.jpg
+  home: images/home.jpg
+  post: images/post.jpg
 
-# Jekyll
-permalink:          /:year/:title/
-markdown:           kramdown
-highlighter:        rouge
+permalink: /:year/:title/
+markdown: kramdown
+highlighter: rouge
 kramdown:
-  auto_ids:         true
-  footnote_nr:      1
-  entity_output:    as_char
-  toc_levels:       1..6
-  enable_coderay:   false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
 sass:
   sass_dir:         assets/_sass
   style:            compressed
 
-# Google Analytics
 google-analytics: UA-25776766-13
 
-# Social Links
-email:             marcus+blog@thingsima.de
-twitter:            sentreh
-github:             marcus-crane
-linkedin:          marcus-crane
-steam:              sandtree
+email: marcus+blog@thingsima.de
+twitter: sentreh
+github: marcus-crane
+linkedin: marcus-crane
+steam: sandtree
 
-# Gems
 gems:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-gist
 
-# Exclude list
 include: [_pages]
 exclude: [README.md, Gemfile, Gemfile.lock, _site, src, vendor, CNAME, LICENSE, Rakefile, .sass-cache, .DS_Store]
