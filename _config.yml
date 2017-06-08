@@ -1,9 +1,39 @@
-name: UTF-9000
+title: UTF-9000
+description: Without you to read it, this blog is just a bunch of markdown files.
+#url: http://localhost:4000
 url: https://blog.thingsima.de
-description: You'll never know if it's good until you read something!
+logo: logo.png
+locale: en_NZ
+
+background:
+  home: images/home.jpg
+  post: images/post.jpg
 
 permalink: /:year/:title/
-paginate: 10
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+sass:
+  sass_dir:         assets/_sass
+  style:            compressed
 
-gems: [jekyll-paginate]
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+google-analytics: UA-25776766-13
+
+email: marcus+blog@thingsima.de
+twitter: sentreh
+github: marcus-crane
+linkedin: marcus-crane
+steam: sandtree
+
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+
+include: [_pages]
+exclude: [README.md, Gemfile, Gemfile.lock, _site, src, vendor, CNAME, LICENSE, Rakefile, .sass-cache, .DS_Store]

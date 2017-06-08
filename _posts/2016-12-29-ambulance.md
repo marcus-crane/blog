@@ -1,8 +1,12 @@
 ---
 layout: post
-title: Ambulance WiFi Hotspots
-date: 2017-01-01
-categories: networking wifi
+title:  Ambulance WiFi Hotspots
+date:   2017-01-01
+excerpt: If it was just a little bit closer...
+image: /assets/img/covers/ambulance.jpg
+tag:
+  - Networking
+  - WiFi
 ---
 
 This actually happened a few days ago but pbbt, everyone is on holiday and writing is hard!
