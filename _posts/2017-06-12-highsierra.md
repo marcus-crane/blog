@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  What can I expect to break with High Sierra?
-date:    2017-06-05
+date:    2017-06-12
 excerpt: What do you expect as an early adopter?
 image: /assets/img/covers/highsierra.jpg
 tag:
