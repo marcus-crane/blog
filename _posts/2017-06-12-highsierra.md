@@ -5,6 +5,7 @@ date:    2017-06-12
 excerpt: What do you expect as an early adopter?
 image: /assets/img/covers/highsierra.jpg
 tag:
+  - Curiosity
   - macOS
 ---
 
