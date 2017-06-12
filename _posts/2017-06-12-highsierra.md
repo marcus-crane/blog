@@ -71,11 +71,31 @@ It seems that the installer has no idea that APFS is a thing yet and as such, fr
 
 On the bright side, at least you can just download everything as one big zip file.
 
+**Update:**
+
+Thanks to Twitter user [Joe Chunks](https://twitter.com/_uncomfortable) for this workaround
+
+<blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-partner="tweetdeck"><p lang="en" dir="ltr">with the google drive issue, couldn&#39;t you just have a permanently mounted dmg formatted as hfs?</p>&mdash; Joe Chunks (@_umcomfortable) <a href="https://twitter.com/_umcomfortable/status/874081100435345408">June 12, 2017</a></blockquote>
+
+To use this workaround, head to `Disk Utility` > `File` > `New Image` > `Blank Image` and a file menu will pop up.
+
+Select where you'd like to save it and the size you'd like it to be and then set the Format to `Mac OS Extended (Journaled)` and hit Save.
+
+You can ignore all the bottom bits like `Encryption` and `Partition`.
+
+Back at the installer screen, select your mounted `dmg` from the Devices sidebar menu and you should be good to go.
+
+Just make sure you create a `dmg` big enough to contain the contents of your drive!
+
+[![A Google Drive error message asking for an HFS+ drive][5]][5]
+
+[5]: /assets/img/highsierra/drivefix.png
+
 ## Kitematic
 
-[![The Kitematic main window with a minor visual glitch][5]][5]
+[![The Kitematic main window with a minor visual glitch][6]][6]
 
-[5]: /assets/img/highsierra/kitematic.png
+[6]: /assets/img/highsierra/kitematic.png
 
 This one isn't bad at all but it's a little annoying.
 
@@ -107,9 +127,9 @@ You can then drag that drive to your `Favourites` sidebar but unfortunately, you
 
 ## StarCraft
 
-[![The Kitematic main window with a minor visual glitch][6]][6]
+[![The Kitematic main window with a minor visual glitch][7]][7]
 
-[6]: /assets/img/highsierra/starcraft.png
+[7]: /assets/img/highsierra/starcraft.png
 
 I didn't intentionally end up testing this! I was downloading the Battle.NET client, lord knows why since I don't play anything in it, and remembered I own both this and Warcraft III.
 
@@ -123,9 +143,9 @@ I'm no debug master but I presume this `Unknown compression scheme` is to do wit
 
 ## Warcraft III
 
-[![A glitchy Warcraft 3 installer][7]][7]
+[![A glitchy Warcraft 3 installer][8]][8]
 
-[7]: /assets/img/highsierra/warcraft3.png
+[8]: /assets/img/highsierra/warcraft3.png
 
 Same deal as above as to why I'm even trying this.
 
